@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1019canvasol畫線</title>
+</head>
+<style>
+    #myCanvas{
+        /* height: 800px;
+        width: 800px; */
+        border: 1px solid coral;       
+    }
+</style>
+<body>
+<canvas id="myCanvas" width="800" height="800"></canvas>
+    <script>
+        const ctx = document.querySelector('#myCanvas').getContext('2d');
+        ctx.beginPath();
+        ctx.moveTo(50,50);
+        ctx.lineTo(200,200);
+        ctx.lineTo(500,300);
+        ctx.moveTo(100,500);
+        ctx.lineTo(200,500);
+        // ctx.lineTo(50,200);
+        ctx.strokeStyle = 'lightpink'
+        ctx.lineWidth = 5;
+        ctx.stroke();
+
+    </script>
+    
+</body>
+</html>
