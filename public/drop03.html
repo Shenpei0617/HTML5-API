@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1020拖拉功能A拖放置B</title>
+</head>
+<style>
+    .box {
+        display: inline-block;
+        width: 200px;
+        height: 200px;
+        background-color: lightgreen;
+        position: absolute;
+        left: 50px;
+        /* chrom會有BUG */
+    }
+    .box1{
+        position: absolute;
+        left: 300px;
+        background-color:lightblue;
+    }
+
+    .ball {
+        height: 50px;
+        width: 50px;
+        background-color: coral;
+        color: white;
+        text-align: center;
+        line-height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+  <div class="box box1">
+    <div class="ball" draggable="true">1</div>
+    <div class="ball" draggable="true">2</div>
+    <div class="ball" draggable="true">3</div>
+  </div>
+
+    <div class="box"></div>
+    <script>
+        let dragTarget = null; // 拖拉的對象
+        const ball = document.querySelectorAll('.ball');
+        const drop = document.querySelectorAll('.box');
+        const myDragStart = event=>{
+            dragTarget = event.currentTarget;
+        };
+        const myDragEnd = event=>{
+            dragTarget = null;
+        };
+        ball.forEach(b => {
+            b.addEventListener('dragstart', myDragStart);
+            b.addEventListener('dragend', myDragEnd);
+            
+        });
+
+        const myDrop = event =>{
+            const rect = event.currentTarget;
+            rect.append(dragTarget);
+        };
+        const myDragOver = event => event.preventDefault();
+
+        drop.forEach(r =>{
+            r.addEventListener('dragover', myDragOver);
+            r.addEventListener('drop', myDrop);
+        });
+    </script>
+
+</body>
+
+</html>
