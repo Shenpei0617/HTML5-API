@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1020Drop拖拉功能dragover</title>
+</head>
+<style>
+    .box {
+        width: 200px;
+        height: 200px;
+        background-color: lightgreen;
+        /* position: absolute;
+        left: 50px; */
+        /* chrom會有BUG */
+    }
+    .ball {
+            height: 50px;
+            width: 50px;
+            background-color:coral;
+            color: white;
+            text-align: center;
+            line-height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+</style>
+
+<body>
+    <div class="ball" draggable="true">1</div>
+  
+    <div class="box"></div>
+    <script>
+        const ball =document.querySelector('.ball');
+        const drop = document.querySelector('.box');
+        const handler = event => {
+            console.log(event.type);
+        }
+        drop.addEventListener('dragstart', handler);     
+        drop.addEventListener('dragover', event=>event.preventDefault());
+        //dragover的處理器內要呼叫preventDefault()，才能觸發drop事件
+          drop.addEventListener('dragstart', handler);
+          drop.addEventListener('drop', handler);
+          //圓型放到方形會console 出drop
+    </script>
+</body>
+
+</html>
