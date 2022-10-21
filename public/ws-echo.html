@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1021WebSocket</title>
+</head>
+<body>
+    <script>
+        let socket = new WebSocket('ws://localhost:3002');
+        socket.addEventListener('open',e=>{
+            console.log('Hi~連線成功');
+        })
+        socket.addEventListener('message',e=>{
+            console.log(e.data);
+        });
+//'ws://192.168.35.200:5000'連到老師的電腦
+    </script>
+</body>
+</html>
