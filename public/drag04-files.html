@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1021外部拖拉檔案</title>
+</head>
+<style>
+    .box {
+        width: 100px;
+        height: 100px;
+        background-color: lightgreen;
+        position: absolute;
+        left: 50px;
+    }
+</style>
+
+<body>
+    <div class="box" draggable="true"></div>
+    <script>
+        const drop = document.querySelector('.box');
+        drop.addEventListener('dragenter', e => {
+            e.currentTarget.style.backgroundColor = 'lightblue';
+        });
+        drop.addEventListener('dragleave', e => {
+            e.currentTarget.style.backgroundColor = 'yellow';
+        });
+        drop.addEventListener('dragover', e => {
+            e.preventDefault();
+        });
+        drop.addEventListener('drop', e => {
+            e.preventDefault();
+            console.log(e.dataTransfer, files);
+        });
+
+    </script>
+</body>
+
+</html>
