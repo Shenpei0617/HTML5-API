@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聊天室</title>
+</head>
+
+<body>
+    <!-- <div>
+        <input id="msg" type="text">
+        <button onclick="sendMsg()">送出</button>
+        </input>
+    </div> -->
+    <!-- 改成form可用enter鍵輸入 -->
+    <div>
+        <form onsubmit="sendMsg(); return false;">
+            <input type="text" id="msg">
+            <button>送出</button>
+        </form>
+    </div>
+    <textarea id="info" cols="50" rows="50" readonly></textarea>
+
+    <script>
+
+        const msg = document.querySelector('#msg');
+        const info = document.querySelector('#info');
+        // ws://localhost:3002自己連線
+        let socket = new WebSocket('ws://localhost:3002');
+        socket.addEventListener('open', e => {
+            info.innerHTML += "--- 連線了 ---\n";
+        });
+        socket.addEventListener('message', e => {
+            info.innerHTML += e.data + "\n";
+        });
+
+        function sendMsg() {
+            socket.send(msg.value);
+            msg.value = '';
+        }
+
+    </script>
+
+</body>
+
+</html>
